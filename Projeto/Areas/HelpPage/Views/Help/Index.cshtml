@@ -1,0 +1,231 @@
+@using System.Web.Http.Controllers
+@using System.Web.Http.Description
+@using System.Collections.ObjectModel
+@model Collection<ApiDescription>
+
+@{
+    ViewBag.Title = "ASP.NET Web API Help Page";
+
+    // Group APIs by controller
+    ILookup<HttpControllerDescriptor, ApiDescription> apiGroups = Model.ToLookup(api => api.ActionDescriptor.ControllerDescriptor);
+}
+<link type="text/css" href="~/Areas/HelpPage/HelpPage.css" rel="stylesheet" />
+<header class="help-page">
+    <div class="content-wrapper">
+        <div class="float-left">
+            <h1>@ViewBag.Title</h1>
+            <h3>
+                Uma API criada para Cadastrar alunos, professores, notas, matérias e turmas.<br />
+                Pode ser usada para verificar aprovação e reprovação de alunos de acordo com as notas cadastradas no sistema.
+            </h3>
+        </div>
+    </div>
+</header>
+
+<div id="body" class="help-page" style="margin-top: 50px;">
+    <h2 style="font-weight: bolder;">Métodos</h2>
+
+    <br />
+    <div>
+        <h4 style="font-weight: bolder;">Aluno</h4>
+
+        <h4 style="margin-top: 20px;">Get</h4>
+        <p>api/aluno/get?id={id}</p>
+        <p>Nenhum parâmetro requerido</p>
+        <hr width="50%" align="left" />
+
+        <h4 style="margin-top: 20px;">GelAll</h4>
+        <p>api/aluno/getAll</p>
+        <p>Nenhum parâmetro requerido</p>
+        <hr width="50%" align="left" />
+
+        <h4 style="margin-top: 20px;">GetByTurma</h4>
+        <p>api/aluno/getByTurma?idTurma={id}</p>
+        <p>Nenhum parâmetro requerido</p>
+        <hr width="50%" align="left" />
+
+        <h4 style="margin-top: 20px;">Post</h4>
+        <p>api/aluno/post</p>
+        <p>
+            {<br />
+            "IdTurma": int,<br />
+            "Nome": string<br />
+            }<br />
+        </p>
+        <hr width="50%" align="left" />
+
+        <h4 style="margin-top: 20px;">Put</h4>
+        <p>api/aluno/update?id={id}</p>
+        <p>
+            {<br />
+            "IdTurma": int,<br />
+            "Nome": string<br />
+            }<br />
+        </p>
+        <hr width="50%" align="left" />
+
+        <h4 style="margin-top: 20px;">Delete</h4>
+        <p>api/aluno/delete?id={id}</p>
+        <p>Nenhum parâmetro requerido</p>
+
+    </div>
+    <hr />
+
+    <br />
+    <div>
+        <h4 style="font-weight: bolder;">Matéria</h4>
+
+        <h4 style="margin-top: 20px;">Get</h4>
+        <p>api/materia/get?id={id}</p>
+        <p>Nenhum parâmetro requerido</p>
+        <hr width="50%" align="left" />
+
+        <h4 style="margin-top: 20px;">GelAll</h4>
+        <p>api/materia/getAll</p>
+        <p>Nenhum parâmetro requerido</p>
+        <hr width="50%" align="left" />
+
+        <h4 style="margin-top: 20px;">Post</h4>
+        <p>api/materia/post</p>
+        <p>
+            {<br />
+            "IdProfessor": int,<br />
+            "IdTurma": int,<br />
+            "Nome": string<br />
+            }<br />
+        </p>
+        <hr width="50%" align="left" />
+
+        <h4 style="margin-top: 20px;">Put</h4>
+        <p>api/materia/update?id={id}</p>
+        <p>
+            {<br />
+            "IdProfessor": int,<br />
+            "IdTurma": int,<br />
+            "Nome": string<br />
+            }<br />
+        </p>
+        <hr width="50%" align="left" />
+
+        <h4 style="margin-top: 20px;">Delete</h4>
+        <p>api/materia/delete?id={id}</p>
+        <p>Nenhum parâmetro requerido</p>
+
+    </div>
+    <hr />
+
+    <br />
+    <div>
+        <h4 style="font-weight: bolder;">Professor</h4>
+
+        <h4 style="margin-top: 20px;">Get</h4>
+        <p>api/professor/get?id={id}</p>
+        <p>Nenhum parâmetro requerido</p>
+        <hr width="50%" align="left" />
+
+        <h4 style="margin-top: 20px;">GelAll</h4>
+        <p>api/professor/getAll</p>
+        <p>Nenhum parâmetro requerido</p>
+        <hr width="50%" align="left" />
+
+        <h4 style="margin-top: 20px;">Post</h4>
+        <p>api/professor/post</p>
+        <p>
+            {<br />
+            "Nome": string<br />
+            }<br />
+        </p>
+        <hr width="50%" align="left" />
+
+        <h4 style="margin-top: 20px;">Put</h4>
+        <p>api/professor/update?id={id}</p>
+        <p>
+            {<br />
+            "Nome": string<br />
+            }<br />
+        </p>
+        <hr width="50%" align="left" />
+
+        <h4 style="margin-top: 20px;">Delete</h4>
+        <p>api/professor/delete?id={id}</p>
+        <p>Nenhum parâmetro requerido</p>
+
+    </div>
+    <hr />
+
+    <br />
+    <div>
+        <h4 style="font-weight: bolder;">Turma</h4>
+
+        <h4 style="margin-top: 20px;">Get</h4>
+        <p>api/turma/get?id={id}</p>
+        <p>Nenhum parâmetro requerido</p>
+        <hr width="50%" align="left" />
+
+        <h4 style="margin-top: 20px;">GelAll</h4>
+        <p>api/turma/getAll</p>
+        <p>Nenhum parâmetro requerido</p>
+        <hr width="50%" align="left" />
+
+        <h4 style="margin-top: 20px;">Post</h4>
+        <p>api/turma/post</p>
+        <p>
+            {<br />
+            "Nome": string<br />
+            }<br />
+        </p>
+        <hr width="50%" align="left" />
+
+        <h4 style="margin-top: 20px;">Put</h4>
+        <p>api/turma/update?id={id}</p>
+        <p>
+            {<br />
+            "Nome": string<br />
+            }<br />
+        </p>
+        <hr width="50%" align="left" />
+
+        <h4 style="margin-top: 20px;">Delete</h4>
+        <p>api/turma/delete?id={id}</p>
+        <p>Nenhum parâmetro requerido</p>
+
+    </div>
+    <hr />
+
+    <br />
+    <div>
+        <h4 style="font-weight: bolder;">Nota</h4>
+
+        <h4 style="margin-top: 20px;">GetByAluno</h4>
+        <p>api/nota/getByAluno?id={id}</p>
+        <p>Nenhum parâmetro requerido</p>
+        <hr width="50%" align="left" />
+
+        <h4 style="margin-top: 20px;">Post</h4>
+        <p>api/nota/post</p>
+        <p>
+            {<br />
+            "IdAluno": int,<br />
+            "IdProfessor": int,<br />
+            "Nota": int<br />
+            }<br />
+        </p>
+        <hr width="50%" align="left" />
+
+        <h4 style="margin-top: 20px;">Put</h4>
+        <p>api/nota/update?id={id}</p>
+        <p>
+            {<br />
+            "IdAluno": int,<br />
+            "IdProfessor": int,<br />
+            "Nota": int<br />
+            }<br />
+        </p>
+        <hr width="50%" align="left" />
+
+        <h4 style="margin-top: 20px;">Delete</h4>
+        <p>api/nota/delete?id={id}</p>
+        <p>Nenhum parâmetro requerido</p>
+
+    </div>
+</div>
